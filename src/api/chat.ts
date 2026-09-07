@@ -15,27 +15,16 @@ export function chatList(params: TypeChatList) {
 }
 
 // 发送对话
-// export function chatCompletions(stream: AbortSignal, messages: Chat.ConversationMessage[]) {
-//   return request({
-//     url: "/compatible-mode/v1/chat/completions",
-//     method: "post",
-//     signal: stream,
-//     responseType: 'stream',
-//     data: {
-//       model: 'deepseek-r1',
-//       messages: messages,
-//       stream: true,
-//       stream_options: {
-//         include_usage: true
-//       }
-//     }
-//   });
-// }
+// 注意：URL 以 /api 开头会走 vite 代理转发到 VITE_APP_API_BASE_URL，
+// 因此这里的路径必须是站点 OpenAI 兼容接口的真实路径（如 /v1/chat/completions）。
+// 当前站点实测仅支持 /v1/chat/completions，不支持 /compatible-mode/ 前缀。
+// 可用模型（GET /v1/models 实时查询）：
+//   deepseek-v4-flash / deepseek-v4-pro / MiniMax-M2.7 / MiniMax-M3 ...
 export function chatCompletions(stream: AbortSignal ,messages: Chat.ConversationMessage[]) {
-  return fetchRequest("/compatible-mode/v1/chat/completions", {
+  return fetchRequest("/v1/chat/completions", {
     method: "POST",
     body: JSON.stringify({
-      model: "deepseek-r1",
+      model: "deepseek-v4-flash",
       messages: messages,
       stream: true,
       stream_options: {
