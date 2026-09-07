@@ -1,0 +1,10 @@
+const { spawn } = require('child_process')
+const path = require('path')
+const fs = require('fs')
+const cwd = process.cwd()
+let all = ''
+const child = spawn(process.execPath, [path.join(cwd, 'node_modules', 'vite', 'bin', 'vite.js'), '--host'], { cwd, env: process.env, stdio: ['ignore', 'pipe', 'pipe'] })
+child.stdout.on('data', d => { all += d })
+child.stderr.on('data', d => { all += d })
+child.on('exit', code => { fs.writeFileSync(path.join(cwd, 'vite.log'), 'EXIT=' + code + '\n' + all); process.exit(0) })
+setTimeout(() => { child.kill('SIGTERM') }, 8000)

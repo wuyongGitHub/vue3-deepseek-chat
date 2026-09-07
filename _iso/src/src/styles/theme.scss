@@ -1,0 +1,223 @@
+/* ==========================================================================
+   玻璃拟态主题变量与工具样式
+   - 白天模式：晨光白玻 (Morning Glass)
+   - 黑夜模式：暗夜黑玻 (Night Glass)
+   通过 <html> 上的 .dark class 切换（白天为默认根，暗色以 html.dark 覆盖）。
+   ========================================================================== */
+
+/* ---------------- 白天模式：晨光白玻（根作用域默认） ---------------- */
+:root {
+  /* 品牌色 */
+  --brand: #00a8e8;
+  --brand-2: #0077b6;
+
+  /* 应用底色 */
+  --app-bg: #f5f7fa;
+
+  /* 文本 */
+  --text-primary: #2c3e50;
+  --text-secondary: rgba(44, 62, 80, 0.66);
+  --text-tertiary: rgba(44, 62, 80, 0.45);
+
+  /* 玻璃容器 */
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-bg-strong: rgba(255, 255, 255, 0.82);
+  --glass-bg-hover: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.65);
+  --glass-shadow: 0 8px 32px rgba(31, 71, 96, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+
+  /* 列表项 */
+  --list-hover: rgba(0, 168, 232, 0.1);
+  --list-active: rgba(0, 168, 232, 0.18);
+
+  /* 对话气泡 */
+  --bubble-user: linear-gradient(135deg, #00a8e8 0%, #0077b6 100%);
+  --bubble-user-text: #ffffff;
+  --bubble-ai: rgba(255, 255, 255, 0.78);
+  --bubble-ai-text: #2c3e50;
+  --bubble-ai-highlight: rgba(255, 255, 255, 0.9);
+
+  /* 输入区 / 思考 */
+  --input-bg: rgba(255, 255, 255, 0.7);
+  --reasoning-bg: rgba(255, 255, 255, 0.5);
+  --reasoning-grid: rgba(0, 168, 232, 0.12);
+  --reasoning-line: rgba(0, 168, 232, 0.28);
+  --code-block-bg: rgba(44, 62, 80, 0.04);
+
+  /* 装饰光斑（毛玻璃背后的光影） */
+  --orb-1: rgba(0, 168, 232, 0.5);
+  --orb-2: rgba(0, 119, 182, 0.32);
+  --orb-3: rgba(120, 200, 240, 0.4);
+
+  color-scheme: light;
+}
+
+/* ---------------- 黑夜模式：暗夜黑玻 ---------------- */
+html.dark {
+  /* 品牌色：赛博紫 + 银灰 */
+  --brand: #7b61ff;
+  --brand-2: #b48cff;
+
+  /* 应用底色 */
+  --app-bg: #0f1115;
+
+  /* 文本 */
+  --text-primary: #eaeaea;
+  --text-secondary: rgba(234, 234, 234, 0.62);
+  --text-tertiary: rgba(234, 234, 234, 0.4);
+
+  /* 玻璃容器 */
+  --glass-bg: rgba(30, 34, 45, 0.55);
+  --glass-bg-strong: rgba(40, 45, 58, 0.78);
+  --glass-bg-hover: rgba(62, 68, 86, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+
+  /* 列表项 */
+  --list-hover: rgba(123, 97, 255, 0.14);
+  --list-active: rgba(123, 97, 255, 0.24);
+
+  /* 对话气泡 */
+  --bubble-user: linear-gradient(135deg, #4b5563 0%, #1f2937 100%);
+  --bubble-user-text: #eaeaea;
+  --bubble-ai: rgba(255, 255, 255, 0.06);
+  --bubble-ai-text: #eaeaea;
+  --bubble-ai-highlight: rgba(255, 255, 255, 0.16);
+
+  /* 输入区 / 思考 */
+  --input-bg: rgba(30, 34, 45, 0.55);
+  --reasoning-bg: rgba(18, 21, 29, 0.5);
+  --reasoning-grid: rgba(123, 97, 255, 0.14);
+  --reasoning-line: rgba(123, 97, 255, 0.3);
+  --code-block-bg: rgba(0, 0, 0, 0.25);
+
+  /* 装饰光斑 */
+  --orb-1: rgba(123, 97, 255, 0.32);
+  --orb-2: rgba(88, 130, 240, 0.24);
+  --orb-3: rgba(180, 140, 255, 0.2);
+
+  color-scheme: dark;
+}
+
+/* ---------------- 页面基础底色（供无毛玻璃背景的页面兜底） ---------------- */
+html,
+body,
+#app {
+  background-color: var(--app-bg);
+}
+
+/* ---------------- 通用玻璃工具类 ---------------- */
+.glass {
+  background-color: var(--glass-bg);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-strong {
+  background-color: var(--glass-bg-strong);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  backdrop-filter: blur(24px) saturate(170%);
+  border: 1px solid var(--glass-border);
+}
+
+/* ---------------- 应用层背景（需要为毛玻璃提供色彩纵深） ---------------- */
+.app-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background-color: var(--app-bg);
+  transition: background-color 0.5s ease;
+  background: radial-gradient(1200px 700px at 12% -8%, var(--orb-1), transparent 60%),
+    radial-gradient(900px 600px at 105% 12%, var(--orb-2), transparent 55%),
+    radial-gradient(1000px 800px at 50% 115%, var(--orb-3), transparent 60%),
+    var(--app-bg);
+}
+
+/* 背景上漂浮的彩色光晕（透过玻璃可见，营造通透感） */
+.app-backdrop::before {
+  content: '';
+  position: absolute;
+  left: -8%;
+  top: 22%;
+  width: 42vmax;
+  height: 42vmax;
+  background: var(--orb-1);
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.7;
+  animation: float-orb 22s ease-in-out infinite alternate;
+}
+.app-backdrop::after {
+  content: '';
+  position: absolute;
+  right: -6%;
+  bottom: -4%;
+  width: 40vmax;
+  height: 40vmax;
+  background: var(--orb-2);
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.7;
+  animation: float-orb 26s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes float-orb {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(4vmax, -3vmax, 0) scale(1.12);
+  }
+}
+
+/* 给主题切换加过渡：仅作用于主要玻璃面板与文字，避免拖慢长列表 */
+.glass,
+.glass-strong,
+.chat-frame,
+.text-primary-smooth {
+  transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass,
+  .glass-strong,
+  .chat-frame {
+    transition: none !important;
+  }
+}
+
+/* ---------------- Element Plus 主题变量覆盖 ---------------- */
+:root {
+  --el-color-primary: var(--brand);
+  --el-color-primary-light-3: color-mix(in srgb, var(--brand) 70%, white);
+  --el-color-primary-light-5: color-mix(in srgb, var(--brand) 50%, white);
+  --el-color-primary-light-7: color-mix(in srgb, var(--brand) 30%, white);
+  --el-color-primary-light-8: color-mix(in srgb, var(--brand) 20%, white);
+  --el-color-primary-light-9: color-mix(in srgb, var(--brand) 10%, white);
+  --el-color-primary-dark-2: color-mix(in srgb, var(--brand) 80%, black);
+  --el-bg-color: var(--glass-bg);
+  --el-text-color-primary: var(--text-primary);
+  --el-text-color-regular: var(--text-secondary);
+  --el-border-color: var(--glass-border);
+}
+
+html.dark {
+  --el-bg-color: rgba(30, 34, 45, 0.6);
+}
+
+/* ---------------- 通用滚动条（玻璃感） ---------------- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--glass-border) transparent;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--text-tertiary);
+  border-radius: 6px;
+}
