@@ -19,7 +19,7 @@
                 <circle cx="12" cy="12" r="13.5" stroke="var(--brand)" stroke-width="0.8" opacity="0.4" stroke-dasharray="3 6" />
               </svg>
             </div>
-            <h2 class="mt-6 text-2xl font-bold hero-title">我是 DeepSeek，很高兴见到你</h2>
+            <h2 class="mt-6 text-2xl font-bold hero-title">我是 聚玻明视-AI助手，很高兴见到你</h2>
             <p class="mt-3 text-sm hero-sub">我可以帮你写代码、读文件、构思创意内容，请把你的任务交给我吧～</p>
             <div class="mt-8 flex flex-wrap justify-center gap-2 max-w-xl hero-chips">
               <span

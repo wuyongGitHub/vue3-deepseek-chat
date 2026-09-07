@@ -28,7 +28,7 @@
                 </linearGradient>
               </defs>
             </svg>
-            <span class="text-lg font-bold tracking-wide brand-text">DeepSeek</span>
+            <span class="text-lg font-bold tracking-wide brand-text">聚玻明视-AI助手</span>
           </div>
           <button class="glass-icon-btn" title="收起侧边栏" @click="changeCollapsed">
             <el-icon :size="18"><Fold /></el-icon>
