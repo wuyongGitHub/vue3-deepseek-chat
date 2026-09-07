@@ -10,7 +10,7 @@
       </div>
     </template>
 
-    <div class="max-w-[78%] overflow-hidden text-sm">
+    <div class="max-w-[85%] overflow-hidden text-sm">
       <div class="text-xs msg-time" :class="[inversion ? 'text-right' : 'text-left']">
         {{ dateTime }}
       </div>

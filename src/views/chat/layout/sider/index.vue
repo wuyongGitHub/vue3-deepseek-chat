@@ -1,13 +1,13 @@
 <template>
   <div
     class="h-full relative transition-all duration-300 ease"
-    :class="{ 'w-68px': collapsed, 'w-260px': !collapsed }"
+    :class="{ 'w-68px': collapsed, 'w-320px': !collapsed }"
   >
     <!-- 展开态玻璃面板 -->
     <Transition name="slide-fade">
       <aside
         v-show="!collapsed"
-        class="glass absolute top-0 left-0 z-10 w-260px h-full flex flex-col rounded-none overflow-hidden sider-panel"
+        class="glass absolute top-0 left-0 z-10 w-320px h-full flex flex-col rounded-none overflow-hidden sider-panel"
       >
         <header class="flex justify-between items-center px-4 pt-4 pb-2 shrink-0">
           <div class="flex items-center gap-2.5">

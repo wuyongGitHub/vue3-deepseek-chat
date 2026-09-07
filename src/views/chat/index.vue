@@ -9,7 +9,7 @@
     <!-- 消息滚动区 -->
     <main class="overflow-hidden flex-1 min-h-0">
       <el-scrollbar ref="scrollRef">
-        <div id="scroll-box" class="w-full max-w-3xl mx-auto px-6 py-4">
+        <div id="scroll-box" class="w-full max-w-3xl mx-auto px-6 py-4 lg:max-w-4xl xl:max-w-5xl">
           <!-- 空状态 -->
           <div v-if="!dataSources.length" class="flex flex-col items-center text-center pt-20 pb-10">
             <div class="empty-orb">
@@ -49,7 +49,7 @@
 
     <!-- 输入区（悬浮玻璃） -->
     <footer class="shrink-0">
-      <div class="max-w-3xl mx-auto px-6 pb-6">
+      <div class="max-w-3xl mx-auto px-6 pb-6 lg:max-w-4xl xl:max-w-5xl">
         <div class="glass-strong rounded-2xl px-4 py-3 composer">
           <el-input
             v-model="prompt"
