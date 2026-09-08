@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # jb-agent-chat
 
 
@@ -137,3 +138,7 @@ VITE_APP_API_KEY=sk-************************
 
 参考 <https://github.com/Chanzhaoyu/chatgpt-web>
 >>>>>>> 2965f238c0786b4bb990f0115555b0d20c236fc4
+=======
+# vue3-deepseek-chat
+一个基于 Vue 3 + TypeScript + Vite 的 AI 智能体聊天前端，提供接近 DeepSeek 官方体验的对话界面，并内置「玻璃拟态（Glassmorphism）」白天 / 黑夜双主题。
+>>>>>>> abfe13b9cc5706bd2d34a38e81623276547cc8fe
