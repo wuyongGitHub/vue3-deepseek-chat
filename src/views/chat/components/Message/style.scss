@@ -1,0 +1,206 @@
+.markdown-body {
+	background-color: transparent;
+	color: var(--text-primary);
+	font-size: var(--chat-font-size, 15px);
+	line-height: 1.8;
+
+	/* 标题层级：克制、清晰 */
+	h1 {
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 1.4;
+		padding-bottom: 0.4em;
+		border-bottom: 1px solid var(--border-light);
+	}
+	h2 {
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 1.4;
+		padding-bottom: 0.4em;
+		border-bottom: 1px solid var(--border-light);
+	}
+	h3 {
+		font-size: 15px;
+		font-weight: 600;
+	}
+	h4 {
+		font-size: 15px;
+		font-weight: 600;
+	}
+
+	p {
+		white-space: pre-wrap;
+	}
+
+	ol {
+		list-style-type: decimal;
+	}
+
+	ul {
+		list-style-type: disc;
+	}
+
+	/* 表格：浅边框 + 浅表头，避免厚重边框 */
+	table th,
+	table td {
+		padding: 8px 13px;
+		border: 1px solid var(--border-light);
+	}
+	table th {
+		font-weight: 600;
+		background: var(--bg-sidebar);
+	}
+	table tr {
+		background-color: transparent;
+		border-top: 1px solid var(--border-light);
+	}
+	table tr:nth-child(2n) {
+		background-color: var(--bg-hover);
+	}
+
+	pre code,
+	pre tt {
+		line-height: 1.65;
+	}
+
+	.highlight pre,
+	pre {
+		background-color: var(--code-block-bg);
+	}
+
+	code.hljs {
+		padding: 0;
+	}
+
+	.code-block {
+		&-wrapper {
+			position: relative;
+			padding-top: 24px;
+		}
+
+		&-header {
+			position: absolute;
+			top: 5px;
+			right: 0;
+			width: 100%;
+			padding: 0 1rem;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			color: var(--text-tertiary);
+
+			&__copy {
+				cursor: pointer;
+				margin-left: 0.5rem;
+				user-select: none;
+
+				&:hover {
+					color: var(--brand);
+				}
+			}
+		}
+	}
+
+	// Mermaid
+	div[id^='mermaid-container'] {
+		padding: 4px;
+		border-radius: 4px;
+		overflow-x: auto !important;
+		background-color: var(--bg-surface);
+		border: 1px solid var(--border-light);
+	}
+
+	&.markdown-body-generate>dd:last-child:after,
+	&.markdown-body-generate>dl:last-child:after,
+	&.markdown-body-generate>dt:last-child:after,
+	&.markdown-body-generate>h1:last-child:after,
+	&.markdown-body-generate>h2:last-child:after,
+	&.markdown-body-generate>h3:last-child:after,
+	&.markdown-body-generate>h4:last-child:after,
+	&.markdown-body-generate>h5:last-child:after,
+	&.markdown-body-generate>h6:last-child:after,
+	&.markdown-body-generate>li:last-child:after,
+	&.markdown-body-generate>ol:last-child li:last-child:after,
+	&.markdown-body-generate>p:last-child:after,
+	&.markdown-body-generate>pre:last-child code:after,
+	&.markdown-body-generate>td:last-child:after,
+	&.markdown-body-generate>ul:last-child li:last-child:after {
+		animation: blink 1s steps(5, start) infinite;
+		color: var(--text-primary);
+		content: '_';
+		font-weight: 700;
+		margin-left: 3px;
+		vertical-align: baseline;
+	}
+
+	@keyframes blink {
+		to {
+			visibility: hidden;
+		}
+	}
+}
+
+@media screen and (max-width: 533px) {
+	.markdown-body .code-block-wrapper {
+		padding: unset;
+
+		code {
+			padding: 24px 16px 16px 16px;
+		}
+	}
+}
+
+/* 移动端：表格转「数据卡片」，避免横向挤压 */
+@media screen and (max-width: 767px) {
+	.markdown-body {
+		table,
+		thead,
+		tbody,
+		tr,
+		th,
+		td {
+			display: block;
+		}
+
+		thead {
+			display: none;
+		}
+
+		table {
+			border: none;
+			background: transparent;
+		}
+
+		table tbody {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		table tr {
+			margin: 0;
+			padding: 12px 14px;
+			border: 1px solid var(--border-light);
+			border-radius: 12px;
+			background: var(--bg-surface);
+		}
+
+		table td {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			gap: 16px;
+			padding: 6px 0;
+			border: none;
+			font-size: 13px;
+			line-height: 1.6;
+		}
+
+		table td::before {
+			content: attr(data-label);
+			flex-shrink: 0;
+			font-weight: 600;
+			color: var(--text-secondary);
+		}
+	}
+}
